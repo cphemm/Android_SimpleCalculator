@@ -20,16 +20,16 @@ public class MainActivity extends AppCompatActivity {
     private EditText operand2;
 
     //These are the buttons
-    private Button btnAddition;
-    private Button btnSubtraction;
-    private Button btnDivision;
-    private Button btnMultiplication;
+    private Button additionBtn;
+    private Button subtractionBtn;
+    private Button divisionBtn;
+    private Button multiplicationBtn;
 
     //This is the Result area
-    private TextView txtResult;
+    private TextView txtTotal;
 
     //This is the reset button
-    private Button btnClear;
+    private Button clearBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,19 +41,19 @@ public class MainActivity extends AppCompatActivity {
         //These are all the references - associate fields by ID
         operand1 = (EditText) findViewById(R.id.editOperand1);
         operand2 = (EditText) findViewById(R.id.editOperand2);
-        btnAddition = (Button) findViewById(R.id.btnAddition);
-        btnSubtraction = (Button) findViewById(R.id.btnSubtraction);
-        btnDivision = (Button) findViewById(R.id.btnDivision);
-        btnMultiplication = (Button) findViewById(R.id.btnMultiplication);
-        txtResult = (TextView) findViewById(R.id.txtResult);
-        btnClear = (Button) findViewById(R.id.btnClear);
+        additionBtn = (Button) findViewById(R.id.btnAddition);
+        subtractionBtn = (Button) findViewById(R.id.btnSubtraction);
+        divisionBtn = (Button) findViewById(R.id.btnDivision);
+        multiplicationBtn = (Button) findViewById(R.id.btnMultiplication);
+        txtTotal = (TextView) findViewById(R.id.txtResult);
+        clearBtn = (Button) findViewById(R.id.btnClear);
 
         //Add listener for addition button
-        btnAddition.setOnClickListener(new View.OnClickListener() {
+        additionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Make sure that two numbers have actually been entered
-                if((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
+                if ((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
                     //Next two lines grab the value that was entered on screen
                     //parse converts string to a number
                     double oper1 = Double.parseDouble(operand1.getText().toString());
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     double total = oper1 + oper2;
 
                     //Put value of total into the result field and converts it back to a string
-                    txtResult.setText(Double.toString(total));
+                    txtTotal.setText(Double.toString(total));
                 } else {
                     Toast.makeText(MainActivity.this, "Please enter numbers in both operand fields", Toast.LENGTH_LONG).show();
                 }
@@ -70,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Add listener for subtraction button
-        btnSubtraction.setOnClickListener(new View.OnClickListener() {
+        subtractionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Make sure that two numbers have actually been entered
-                if((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
+                if ((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
                     //Next two lines grab the value that was entered on screen
                     //parse converts string to a number
                     double oper1 = Double.parseDouble(operand1.getText().toString());
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     double total = oper1 - oper2;
 
                     //Put value of total into the result field and converts it back to a string
-                    txtResult.setText(Double.toString(total));
+                    txtTotal.setText(Double.toString(total));
                 } else {
                     Toast.makeText(MainActivity.this, "Please enter numbers in both operand fields", Toast.LENGTH_LONG).show();
                 }
@@ -91,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Add listener for division button
-        btnDivision.setOnClickListener(new View.OnClickListener() {
+        divisionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Make sure that two numbers have actually been entered
-                if((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
+                if ((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
                     //Next two lines grab the value that was entered on screen
                     //parse converts string to a number
                     double oper1 = Double.parseDouble(operand1.getText().toString());
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     double total = oper1 / oper2;
 
                     //Put value of total into the result field and converts it back to a string
-                    txtResult.setText(Double.toString(total));
+                    txtTotal.setText(Double.toString(total));
                 } else {
                     Toast.makeText(MainActivity.this, "Please enter numbers in both operand fields", Toast.LENGTH_LONG).show();
                 }
@@ -112,11 +112,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Add listener for multiplication button
-        btnMultiplication.setOnClickListener(new View.OnClickListener() {
+        multiplicationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Make sure that two numbers have actually been entered
-                if((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
+                if ((operand1.getText().length() > 0) && (operand2.getText().length() > 0)) {
                     //Next two lines grab the value that was entered on screen
                     //parse converts string to a number
                     double oper1 = Double.parseDouble(operand1.getText().toString());
@@ -125,20 +125,20 @@ public class MainActivity extends AppCompatActivity {
                     double total = oper1 * oper2;
 
                     //Put value of total into the result field and converts it back to a string
-                    txtResult.setText(Double.toString(total));
+                    txtTotal.setText(Double.toString(total));
                 } else {
                     Toast.makeText(MainActivity.this, "Please enter numbers in both operand fields", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
-        btnClear.setOnClickListener(new View.OnClickListener() {
+        clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Clear the values of the operands and result
                 operand1.setText("");
                 operand2.setText("");
-                txtResult.setText("0.00");
+                txtTotal.setText("0.00");
 
                 //This line moves cursor back to operand1
                 operand1.requestFocus();
@@ -177,3 +177,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
